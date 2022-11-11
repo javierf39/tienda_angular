@@ -63,5 +63,12 @@ export class CompraService {
     const total = this.productosCarrito.reduce((acc, producto) => acc+=(producto.quantity*producto.price),0); 
     this.totalSubject.next(total);
   };
+
+  resetInfo(){
+    this.productosCarrito=[];
+    this.carritoSubject.next([]);
+    this.cantidadProductosSubject.next(0);
+    this.totalSubject.next(0);
+  };
 }
 

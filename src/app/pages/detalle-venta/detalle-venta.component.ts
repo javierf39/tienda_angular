@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Producto } from 'src/app/models/producto';
 import { CompraService } from 'src/app/services/compra.service';
 
@@ -11,7 +12,7 @@ import swal from'sweetalert2';
 })
 export class DetalleVentaComponent implements OnInit {
 
-  constructor(private compraSvc:CompraService) { }
+  constructor(private compraSvc:CompraService, private router:Router) { }
 
   productos!:Producto[];
   total!:number;
@@ -47,7 +48,12 @@ export class DetalleVentaComponent implements OnInit {
       showConfirmButton: false,
       timer: 2000
     });
-  }
 
-  
+    
+    setTimeout(() => {
+      this.compraSvc.resetInfo();
+      this.router.navigate(['/'])
+    }, 2000)
+    
+  };
 }
