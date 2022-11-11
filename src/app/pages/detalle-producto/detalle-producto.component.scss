@@ -1,0 +1,53 @@
+.producto {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: 80vh;
+    margin: 0 auto;
+    margin-top: 100px;
+    .img {
+        width: 25%;
+        height: 350px;
+        box-shadow: 0px 0px 10px black;
+        img {
+            width: 100%;
+            object-fit: fill;
+            height: 100%;
+        }
+    }
+    .info-producto {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+        width: 73%;
+        height: 350px;
+        box-shadow: 0px 0px 10px #ccc;
+        padding: 20px;
+        h1,
+        h3 {
+            text-transform: capitalize;
+            font-family: 'Libre Baskerville', serif;
+        }
+        button {
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 80px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+    }
+}
+
+@media(max-width:750px) {
+    .producto {
+        flex-direction: column;
+        height: 100vh;
+        .img {
+            width: 100%;
+            box-shadow: none;
+        }
+        .info-producto {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+}

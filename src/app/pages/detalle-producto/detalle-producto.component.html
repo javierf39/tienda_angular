@@ -1,0 +1,13 @@
+<div class="producto">
+    <div class="img">
+        <img src="{{producto.thumbnail}}" alt="{{producto.title}}">
+    </div>
+    <div class="info-producto">
+        <h1>{{producto.title}}</h1>
+        <h3>{{producto.category}}</h3>
+        <p>{{producto.description}}</p>
+        <strong>{{producto.price | currency}}</strong>
+        <button (click)="agregarCarrito(producto)" class="btn btn-dark">Agregar al carrito <i class="bi bi-cart icon"></i></button>
+    </div>
+
+</div>

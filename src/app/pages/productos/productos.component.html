@@ -1,0 +1,5 @@
+<app-banner [categoria]="categoria"></app-banner>
+
+<div class="productos">
+    <app-producto [producto]="producto" (enviarProducto)="agregarProducto($event)" *ngFor="let producto of productos"></app-producto>
+</div>

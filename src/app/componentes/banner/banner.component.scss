@@ -1,0 +1,22 @@
+.banner {
+    position: relative;
+    width: 97%;
+    height: 180px;
+    margin: 0 auto;
+    margin-top: 30px;
+    .img-banner {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        filter: blur(2px);
+    }
+    h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: black;
+        font-family: 'Libre Baskerville', serif;
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,7 @@
+<div class="producto">
+    <a [routerLink]="['/detalle-producto', producto.id]"><img src="{{producto.thumbnail}}" alt=""></a>
+    <h6>{{producto.title}}</h6>
+    <strong style="font-weight: bold;">{{producto.price | currency}}</strong>
+
+    <button [disabled]="producto.stock===0" class="btn btn-dark" (click)="agregarProducto()">Agregar al carrito <i class="bi bi-cart icon"></i></button>
+</div>

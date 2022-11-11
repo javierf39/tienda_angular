@@ -1,0 +1,66 @@
+<div class="detalle-venta" [ngClass]="{'sin-productos': productos.length == 0}">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">SubTotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of productos">
+                <td><img src="{{producto.thumbnail}}" alt="{{producto.title}}"></td>
+                <td>{{producto.title}}</td>
+                <td>{{producto.quantity}} <br> <button (click)="quitarProductoCarrito(producto.id)">Borrar</button></td>
+
+                <td>{{producto.price | currency}}</td>
+                <td>{{producto.subTotal | currency}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+
+
+    <div class="resumen-compra">
+        <h1>Resumen del pedido</h1>
+        <h6>Total a pagar: <span>{{total | currency}}</span> </h6>
+    </div>
+    <div class="formulario-compra">
+        <h2>Datos cliente</h2>
+        <form #formCompra="ngForm" (ngSubmit)="confirmarCompra($event)">
+            <div class="form-group">
+                <label for="nombreCliente">Nombre</label>
+                <input type="text" class="form-control" name="nombreCliente" [(ngModel)]="cliente.nombre" placeholder="Ingrese su nombre" #nombreCliente="ngModel" required pattern="[a-zA-Z ]{2,100}">
+                <small class="form-text text-muted validacion" *ngIf="nombreCliente.touched && !nombreCliente.valid">Debe ingresar su nombre</small>
+            </div>
+            <div class="form-group">
+                <label for="direccionCliente">Dirección</label>
+                <input type="text" class="form-control" name="direccionCliente" #direccionCliente="ngModel" [(ngModel)]="cliente.direccion" placeholder="Ingrese su dirección" required>
+                <small class="form-text text-muted validacion" *ngIf="direccionCliente.touched && !direccionCliente.valid">Debe ingresar su direccion</small>
+
+            </div>
+            <div class="form-group">
+                <label for="celularCliente">Celular</label>
+                <input type="number" class="form-control" name="celularCliente" #celularCliente="ngModel" [(ngModel)]="cliente.celular" placeholder="Ingrese su celular 987456321" required pattern="[0-9]{9,9}">
+                <small class="form-text text-muted validacion" *ngIf="celularCliente.touched && !celularCliente.valid">Debe ingresar su celular</small>
+
+            </div>
+            <div class="form-group">
+                <label for="correoCliente">Correo</label>
+                <input type="email" class="form-control" name="correoCliente" #correoCliente="ngModel" [(ngModel)]="cliente.correo" placeholder="Ingrese su correo ejemplo@ejemplo.com" required pattern="[a-z0-9._%+-]+@[a-z]+\.[a-z]{2,4}$">
+                <small class="form-text text-muted validacion" *ngIf="correoCliente.touched && !correoCliente.valid">Debe ingresar su correo</small>
+
+            </div>
+            <button [disabled]="!formCompra.valid" type="submit" class="btn btn-dark">Comprar</button>
+        </form>
+    </div>
+</div>
+
+<ng-container *ngIf="productos.length == 0">
+    <div class="carrito-vacio">
+        <h1>Carrito vacío</h1>
+        <p>Tu carrito esta vacío, agrega tus productos favoritos para continuar con tu compra.</p>
+    </div>
+</ng-container>

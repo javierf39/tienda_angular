@@ -1,0 +1,23 @@
+.productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    width: 99%;
+    height: auto;
+    margin: 0 15px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+@media(max-width:1250px) {
+    .productos {
+        margin-top: 0px;
+    }
+}
+
+@media(max-width:493px) {
+    .productos {
+        justify-content: center;
+        margin: 0;
+    }
+}
