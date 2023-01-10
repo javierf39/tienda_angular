@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 export class GrillaProductosComponent implements OnInit {
 
   constructor(private router:Router) { }
-
+  
+  //al iniciar el componente, se obtienen todos los enlaces y se agrega a cada uno el evento click, para viajar a determinadas rutas
   ngOnInit(): void {
     const enlaces = document.querySelectorAll(".enlace");
     enlaces.forEach(a => a.addEventListener('click', (event:any) => {

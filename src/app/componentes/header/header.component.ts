@@ -9,6 +9,7 @@ import { CompraService } from 'src/app/services/compra.service';
 })
 export class HeaderComponent implements OnInit {
 
+  //carrito con los valores enviados a traves del observable
   productosCarrito = this.compraSvc.cantidad$;
 
   constructor(private compraSvc: CompraService) { }

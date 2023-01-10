@@ -9,7 +9,9 @@ import { CompraService } from 'src/app/services/compra.service';
 })
 export class ProductoComponent implements OnInit {
 
+  //recibir los productos desde el componente padre
   @Input() producto!: Producto
+  //enviar los productos que se agregaran al carrito de compras
   @Output() enviarProducto = new EventEmitter<Producto>();
 
   constructor() { }
@@ -17,6 +19,7 @@ export class ProductoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //emitir el evento creado
   agregarProducto(){
     this.enviarProducto.emit(this.producto)
   };

@@ -24,6 +24,7 @@ export class DetalleVentaComponent implements OnInit {
     correo:''
   };
 
+  //al inicializar el componente, se obtiene el total a pagar desde la funcion del servicio
   ngOnInit(): void {
     this.compraSvc.carrito$.subscribe(
       productos => {
@@ -33,13 +34,17 @@ export class DetalleVentaComponent implements OnInit {
       this.compraSvc.total$.subscribe(total => this.total = total);
   };
 
+  //funcion para quitar productos del carrito mediante su id
   quitarProductoCarrito(id:number){
     this.compraSvc.quitarProductoCarrito(id)
   };
 
+  //mensaje de confirmacion de la venta
   confirmarCompra(e:Event){
+    //innecesario con ngSubmit
     e.preventDefault();
 
+    //paqueta de sweetAlert
     swal.fire({
       position: 'center',
       icon: 'success',
@@ -49,7 +54,7 @@ export class DetalleVentaComponent implements OnInit {
       timer: 2000
     });
 
-    
+    //resetear los datos de los observables y cambiar de ruta despues de 2 segundos
     setTimeout(() => {
       this.compraSvc.resetInfo();
       this.router.navigate(['/'])

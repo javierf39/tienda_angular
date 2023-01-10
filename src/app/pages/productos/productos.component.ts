@@ -16,23 +16,21 @@ export class ProductosComponent implements OnInit {
   productos!:Producto[];
   categoria:any;
 
+  //al iniciar el componente, se obtiene la categoria del producto mediante activatedRouter y obtener los productos por categoria
   ngOnInit(): void {
-    // this.productosServices.getAllProducts().subscribe(
-    //   (productos) => {
-    //   this.productos=productos.products
-    //   }
-    // );
     this.activatedRoute.paramMap.subscribe((params:ParamMap) => {
       this.categoria = params.get('categoria');
       this.productosSvc.getProductsOfCategory(this.categoria).subscribe(productos => {
         this.productos = productos.products
       })
     });  
+    //mostramos la imagen del banner segun la categoria del producto seleccionado
     const imgBanner = document.querySelector(".img-banner");
     imgBanner?.setAttribute('src',`../../../assets/img/${this.categoria.toLowerCase()}.jpg`);
 
   };
 
+  //funcion para agregar productos al carrito
   agregarProducto(producto:Producto){
     this.compraService.obtenerDatos(producto);
   };
